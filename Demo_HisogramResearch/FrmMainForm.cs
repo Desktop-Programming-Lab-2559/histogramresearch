@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using HisogramResearch.Entity;
+using HisogramResearch.Utils;
 using ZedGraph;
 
-namespace Demo_HisogramResearch
+namespace HisogramResearch
 {
     public partial class FrmMainForm : Form
     {
@@ -13,6 +15,7 @@ namespace Demo_HisogramResearch
         public FrmMainForm()
         {
             InitializeComponent();
+            progressBar1.Visible = false;
         }
 
         private void pictSource_DoubleClick(object sender, EventArgs e)
@@ -28,6 +31,8 @@ namespace Demo_HisogramResearch
                 pictSource.Image.Dispose();
             if (ofd.FileName.Length > 0)
                 pictSource.Image = Image.FromFile(ofd.FileName);
+
+            LoadImageSelect();
 
         }
 
@@ -72,14 +77,15 @@ namespace Demo_HisogramResearch
             control.Invalidate();
             control.Refresh();
         }
-        private void button3LoadImage_Click(object sender, EventArgs e)
+
+        private void LoadImageSelect()
         {
-            if(pictSource.Image == null) return;
+            if (pictSource.Image == null) return;
 
             var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(pictSource.Image));
 
             // GraphPane object holds one or more Curve objects (or plots)
-           
+
             PointPairList spl1 = new PointPairList();
             PointPairList spl2 = new PointPairList();
             for (int i = 0; i < histogramResult.Histogram.Length; i++)
@@ -93,12 +99,15 @@ namespace Demo_HisogramResearch
             }
 
 
-            Draw(zedGraphControl1,spl1,"Histogram");
-            Draw(zedGraphControl2,spl2,"Red Color");
+            Draw(zedGraphControl1, spl1, "Histogram");
+            Draw(zedGraphControl2, spl2, "Red Color");
+        }
 
+        private void button3LoadImage_Click(object sender, EventArgs e)
+        {
             btnTimKiemAnh.Enabled = false;
-             
             LoadImage();
+            GetOfffline();
             btnTimKiemAnh.Enabled = true;
         }
         public void CreateChart()
@@ -144,20 +153,58 @@ namespace Demo_HisogramResearch
             BarItem.CreateBarLabels(myPane, false, "f0");
 
         }
+
+        private DistanceDental _distanceDental= new DistanceDental();
+        private string FileDataName = "/DataFile.json";
+        private string FileDistance = "/DataDistance.json";
+        private List<ImageFile> _directory = new List<ImageFile>(); 
         private void LoadImage()
         {
             string[] files = Directory.GetFiles(textBox1.Text);
-
+            _directory.Clear();
+            int index = 0;
+            SetProgressBar(0, files.Length);
             foreach (var file in files)
             {
-                try
+                var histogramResult = HistogramUtils.GetHistogramTB(file);
+                if (histogramResult != null)
                 {
-                    var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(file));
-                    DicPicture[file] = histogramResult;
+                    _directory.Add(new ImageFile
+                        {
+                            FilePath = file,
+                            HistogramResult = histogramResult,
+                            Index = index,
+                            Color = HistogramUtils.GetMatrix(histogramResult.Histogram, histogramResult.RedColor, histogramResult.CumulativeHistogram)
+                        });
+                    index++;
+                    //DicPicture[file] = histogramResult;
                 }
-                catch (Exception)
-                {}
+                SetProgressBarNext();
             }
+
+            var data = JsonUtils.Serialize(_directory);
+            DirectionIO.WriteAllText(textBox1.Text + FileDataName, data);
+        }
+
+        private void GetOfffline()
+        {
+            if (_directory.Count > 2)
+            {
+                _distanceDental.ImageFile1 = _directory[0];
+                _distanceDental.ImageFile2 = _directory[1];
+            }
+            SetProgressBar(0, _directory.Count);
+            foreach (var imageFile in _directory)
+            {
+                _distanceDental.Distance1[imageFile.Index] = HistogramUtils.GetDistance(
+                    _distanceDental.ImageFile1.Color, imageFile.Color);
+                _distanceDental.Distance2[imageFile.Index] = HistogramUtils.GetDistance(
+                   _distanceDental.ImageFile2.Color, imageFile.Color);
+                SetProgressBarNext();
+            }
+
+            var data = JsonUtils.Serialize(_directory);
+            DirectionIO.WriteAllText(textBox1.Text + FileDistance, data);
         }
         private List<string> FindingImage(HistogramResult ifind)
         {
@@ -169,6 +216,17 @@ namespace Demo_HisogramResearch
             }
             return list;
         }
+        private List<int> FindingImage(ImageFile ifind)
+        {
+            var distanceq1 = HistogramUtils.GetDistance(ifind.Color, _distanceDental.ImageFile1.Color);
+            var distanceq2 = HistogramUtils.GetDistance(ifind.Color, _distanceDental.ImageFile2.Color);
+            for (int i = 0; i < 256; i++)
+            {
+                _distanceDental.Distanceq1[i] = Math.Abs(_distanceDental.Distance1[i] - distanceq1);
+                _distanceDental.Distanceq1[i] = Math.Abs(_distanceDental.Distance2[i] - distanceq2);
+                _distanceDental.Distancel[i] = Math.Max(_distanceDental.Distanceq1[i], _distanceDental.Distanceq2[i]);
+            }
+        }
 
         private void btnTimKiemAnh_Click(object sender, EventArgs e)
         {
@@ -176,10 +234,32 @@ namespace Demo_HisogramResearch
             if (pictSource.Image == null) return;
             btnTimKiemAnh.Enabled = false;
             var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(pictSource.Image));
-            var result = FindingImage(histogramResult);
+            var imagefile = new ImageFile
+                {
+                    HistogramResult = histogramResult,
+                    Color = HistogramUtils.GetMatrix(histogramResult.Histogram, histogramResult.RedColor, histogramResult.CumulativeHistogram)
+                };
+            var result = FindingImage(imagefile);
             if (result.Count > 0)
                 pictureBox2.Image = Image.FromFile(result[0]);
             btnTimKiemAnh.Enabled = true;
         }
+
+
+        #region progresbar
+        private void SetProgressBar(int start, int end)
+        {
+            progressBar1.Minimum = start;
+            progressBar1.Maximum = end;
+            progressBar1.Value = start;
+            progressBar1.Visible = true;
+        }
+        private void SetProgressBarNext()
+        {
+            progressBar1.Value ++;
+            if (progressBar1.Value >= progressBar1.Maximum)
+                progressBar1.Visible = false;
+        }
+        #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Demo_HisogramResearch
+﻿namespace HisogramResearch
 {
     partial class FrmMainForm
     {
@@ -43,7 +43,13 @@
             this.button3LoadImage = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -76,12 +82,12 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(89, 10);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(956, 20);
+            this.textBox1.Size = new System.Drawing.Size(832, 20);
             this.textBox1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1051, 20);
+            this.button1.Location = new System.Drawing.Point(927, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 23);
             this.button1.TabIndex = 3;
@@ -147,7 +153,7 @@
             // 
             // button3LoadImage
             // 
-            this.button3LoadImage.Location = new System.Drawing.Point(270, 207);
+            this.button3LoadImage.Location = new System.Drawing.Point(966, 8);
             this.button3LoadImage.Name = "button3LoadImage";
             this.button3LoadImage.Size = new System.Drawing.Size(75, 23);
             this.button3LoadImage.TabIndex = 3;
@@ -157,7 +163,7 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(370, 36);
+            this.zedGraphControl1.Location = new System.Drawing.Point(367, 50);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 255D;
@@ -166,7 +172,7 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(311, 231);
+            this.zedGraphControl1.Size = new System.Drawing.Size(205, 217);
             this.zedGraphControl1.TabIndex = 4;
             // 
             // label2
@@ -178,9 +184,45 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Chọn ảnh:";
             // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(17, 482);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(31, 23);
+            this.btnPreview.TabIndex = 6;
+            this.btnPreview.Text = "<";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.Location = new System.Drawing.Point(54, 483);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(35, 23);
+            this.btnFirst.TabIndex = 6;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = true;
+            // 
+            // btnLast
+            // 
+            this.btnLast.Location = new System.Drawing.Point(95, 483);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(35, 23);
+            this.btnLast.TabIndex = 6;
+            this.btnLast.Text = ">>";
+            this.btnLast.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(136, 483);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(35, 23);
+            this.btnNext.TabIndex = 6;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(734, 36);
+            this.zedGraphControl2.Location = new System.Drawing.Point(592, 50);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 255D;
@@ -189,15 +231,42 @@
             this.zedGraphControl2.ScrollMinX = 0D;
             this.zedGraphControl2.ScrollMinY = 0D;
             this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(311, 231);
+            this.zedGraphControl2.Size = new System.Drawing.Size(203, 217);
             this.zedGraphControl2.TabIndex = 4;
+            // 
+            // zedGraphControl3
+            // 
+            this.zedGraphControl3.Location = new System.Drawing.Point(827, 50);
+            this.zedGraphControl3.Name = "zedGraphControl3";
+            this.zedGraphControl3.ScrollGrace = 0D;
+            this.zedGraphControl3.ScrollMaxX = 255D;
+            this.zedGraphControl3.ScrollMaxY = 0D;
+            this.zedGraphControl3.ScrollMaxY2 = 0D;
+            this.zedGraphControl3.ScrollMinX = 0D;
+            this.zedGraphControl3.ScrollMinY = 0D;
+            this.zedGraphControl3.ScrollMinY2 = 0D;
+            this.zedGraphControl3.Size = new System.Drawing.Size(203, 217);
+            this.zedGraphControl3.TabIndex = 4;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(88, 32);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(833, 4);
+            this.progressBar1.TabIndex = 7;
             // 
             // FrmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 489);
+            this.ClientSize = new System.Drawing.Size(1095, 515);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnLast);
+            this.Controls.Add(this.btnFirst);
+            this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.zedGraphControl3);
             this.Controls.Add(this.zedGraphControl2);
             this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.button3LoadImage);
@@ -238,7 +307,13 @@
         private System.Windows.Forms.Button button3LoadImage;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Button btnNext;
         private ZedGraph.ZedGraphControl zedGraphControl2;
+        private ZedGraph.ZedGraphControl zedGraphControl3;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -7,10 +7,11 @@
     <ProjectGuid>{BD4179DC-EEA1-4734-B299-5E1F0D573A50}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Demo_HisogramResearch</RootNamespace>
-    <AssemblyName>Demo_HisogramResearch</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>HisogramResearch</RootNamespace>
+    <AssemblyName>HisogramResearch</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="fastjson">
+      <HintPath>..\packages\fastJSON.2.1.0.0\lib\net40\fastjson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\DistanceDental.cs" />
+    <Compile Include="Entity\HistogramResult.cs" />
+    <Compile Include="Entity\ImageFile.cs" />
     <Compile Include="FrmMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,10 +64,11 @@
     <Compile Include="HistogramaDesenat.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HistogramResult.cs" />
-    <Compile Include="HistogramUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\DirectionIO.cs" />
+    <Compile Include="Utils\HistogramUtils.cs" />
+    <Compile Include="Utils\JsonUtils.cs" />
     <EmbeddedResource Include="FrmMainForm.resx">
       <DependentUpon>FrmMainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,7 +83,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

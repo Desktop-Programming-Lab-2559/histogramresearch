@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Windows.Forms;
 
-namespace Demo_HisogramResearch
+namespace HisogramResearch
 {
 	/// <summary>
 	/// Summary description for HistogramaDesenat.

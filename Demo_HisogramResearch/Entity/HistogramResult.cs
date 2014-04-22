@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Demo_HisogramResearch
+namespace HisogramResearch.Entity
 {
     public class HistogramResult
     {
         public long[] RedColor { get; set; }
         public long[] Histogram { get; set; }
+        public long[] CumulativeHistogram { get; set; }
 
 
         public int CompareTo(HistogramResult compare)
