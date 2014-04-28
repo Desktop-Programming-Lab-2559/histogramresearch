@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Entity\DistanceDental.cs" />
     <Compile Include="Entity\HistogramResult.cs" />
+    <Compile Include="Entity\IDistance.cs" />
     <Compile Include="Entity\ImageFile.cs" />
     <Compile Include="FrmMainForm.cs">
       <SubType>Form</SubType>

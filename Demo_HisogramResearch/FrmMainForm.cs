@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using HisogramResearch.Entity;
 using HisogramResearch.Utils;
@@ -107,8 +108,9 @@ namespace HisogramResearch
         {
             btnTimKiemAnh.Enabled = false;
             LoadImage();
-            GetOfffline();
-            btnTimKiemAnh.Enabled = true;
+            //GetOfffline();
+           btnTimKiemAnh.Enabled = true;
+
         }
         public void CreateChart()
         {
@@ -178,14 +180,22 @@ namespace HisogramResearch
                         });
                     index++;
                     //DicPicture[file] = histogramResult;
+                    imageList1.Images.Add(index.ToString(), Image.FromFile(file));
                 }
                 SetProgressBarNext();
-            }
 
+                
+            }
+            for (int j = 0; j < this.imageList1.Images.Count; j++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.ImageIndex = j;
+                this.listView1.Items.Add(item);
+            }
             var data = JsonUtils.Serialize(_directory);
             DirectionIO.WriteAllText(textBox1.Text + FileDataName, data);
         }
-
+        // tinh toan offline
         private void GetOfffline()
         {
             if (_directory.Count > 2)
@@ -193,13 +203,22 @@ namespace HisogramResearch
                 _distanceDental.ImageFile1 = _directory[0];
                 _distanceDental.ImageFile2 = _directory[1];
             }
+            _distanceDental.ListCount = _directory.Count;
             SetProgressBar(0, _directory.Count);
             foreach (var imageFile in _directory)
             {
-                _distanceDental.Distance1[imageFile.Index] = HistogramUtils.GetDistance(
-                    _distanceDental.ImageFile1.Color, imageFile.Color);
-                _distanceDental.Distance2[imageFile.Index] = HistogramUtils.GetDistance(
-                   _distanceDental.ImageFile2.Color, imageFile.Color);
+                var distence1 = HistogramUtils.GetDistance(_distanceDental.ImageFile1.Color, imageFile.Color);
+                _distanceDental.Distance1.Add(new IDistance
+                    {
+                        Distance = distence1,
+                        Image = imageFile.Clone() as ImageFile,
+                    });
+                var distence2 =  HistogramUtils.GetDistance(_distanceDental.ImageFile2.Color, imageFile.Color);
+                _distanceDental.Distance2.Add(new IDistance
+                {
+                    Distance = distence2,
+                    Image = imageFile.Clone() as ImageFile,
+                });
                 SetProgressBarNext();
             }
 
@@ -216,15 +235,46 @@ namespace HisogramResearch
             }
             return list;
         }
-        private List<int> FindingImage(ImageFile ifind)
+
+        /// <summary>
+        /// xu ly online. tim kiem anh.
+        /// loc ra danh sách cần xủ lý.
+        /// </summary>
+        /// <param name="ifind"></param>
+        /// <returns></returns>
+        private  void FindingImage(ImageFile ifind)
         {
             var distanceq1 = HistogramUtils.GetDistance(ifind.Color, _distanceDental.ImageFile1.Color);
             var distanceq2 = HistogramUtils.GetDistance(ifind.Color, _distanceDental.ImageFile2.Color);
-            for (int i = 0; i < 256; i++)
+            for (int i = 0; i < _distanceDental.ListCount; i++)
             {
-                _distanceDental.Distanceq1[i] = Math.Abs(_distanceDental.Distance1[i] - distanceq1);
-                _distanceDental.Distanceq1[i] = Math.Abs(_distanceDental.Distance2[i] - distanceq2);
-                _distanceDental.Distancel[i] = Math.Max(_distanceDental.Distanceq1[i], _distanceDental.Distanceq2[i]);
+                _distanceDental.Distanceq1[_distanceDental.Distance1[i].Image.Index] = Math.Abs(_distanceDental.Distance1[i].Distance - distanceq1);
+                _distanceDental.Distanceq2[_distanceDental.Distance2[i].Image.Index] = Math.Abs(_distanceDental.Distance2[i].Distance - distanceq2);
+            }
+            foreach (var d in _distanceDental.Distanceq1)
+            {
+                var indexof = d.Key;
+                if (_distanceDental.Distanceq2.ContainsKey(indexof))
+                {
+                    _distanceDental.Distancel[indexof] = Math.Max(d.Value, _distanceDental.Distanceq2[indexof]);
+                }
+                else
+                {
+                    throw new Exception(@"Loi khong tim thay khoang cach tuong ung ");
+                }
+            }
+            var dicValueInde = new Dictionary<double, int>();
+           
+            var listdistance = _distanceDental.Distancel.Values.ToList();
+            listdistance.Sort();
+            foreach (var d in listdistance)
+            {
+                var listvalue = _distanceDental.Distancel.Where(a => a.Value == d);
+                foreach (var b in listvalue)
+                {
+                    var imagefile = _directory.Find(a => a.Index == b.Key);
+                    imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
+                }
             }
         }
 
@@ -239,9 +289,8 @@ namespace HisogramResearch
                     HistogramResult = histogramResult,
                     Color = HistogramUtils.GetMatrix(histogramResult.Histogram, histogramResult.RedColor, histogramResult.CumulativeHistogram)
                 };
-            var result = FindingImage(imagefile);
-            if (result.Count > 0)
-                pictureBox2.Image = Image.FromFile(result[0]);
+             FindingImage(imagefile);
+            
             btnTimKiemAnh.Enabled = true;
         }
 

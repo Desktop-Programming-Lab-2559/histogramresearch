@@ -126,7 +126,7 @@ namespace HisogramResearch.Utils
             double total = 0;
             for (int i = 0; i < 256; i++)
             {
-                var d = Math.Abs(RedColor1[i] - RedColor1[i]);
+                var d = Math.Abs(RedColor1[i] - RedColor2[i]);
                 total += Math.Pow(d, 2);
             }
             return Math.Sqrt(total);

@@ -35,10 +35,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnTimKiemAnh = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.button3LoadImage = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
@@ -50,11 +46,14 @@
             this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
             this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.zedGraphControl4 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl5 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl6 = new ZedGraph.ZedGraphControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictSource
@@ -108,48 +107,8 @@
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.ImageSize = new System.Drawing.Size(32, 32);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(17, 296);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(258, 181);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(299, 296);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(238, 181);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(556, 296);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(258, 181);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(840, 296);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(238, 181);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
             // 
             // button3LoadImage
             // 
@@ -163,7 +122,7 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(367, 50);
+            this.zedGraphControl1.Location = new System.Drawing.Point(367, 66);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 255D;
@@ -172,7 +131,7 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(205, 217);
+            this.zedGraphControl1.Size = new System.Drawing.Size(205, 193);
             this.zedGraphControl1.TabIndex = 4;
             // 
             // label2
@@ -222,7 +181,7 @@
             // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(592, 50);
+            this.zedGraphControl2.Location = new System.Drawing.Point(592, 66);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 255D;
@@ -231,12 +190,12 @@
             this.zedGraphControl2.ScrollMinX = 0D;
             this.zedGraphControl2.ScrollMinY = 0D;
             this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(203, 217);
+            this.zedGraphControl2.Size = new System.Drawing.Size(203, 193);
             this.zedGraphControl2.TabIndex = 4;
             // 
             // zedGraphControl3
             // 
-            this.zedGraphControl3.Location = new System.Drawing.Point(827, 50);
+            this.zedGraphControl3.Location = new System.Drawing.Point(827, 66);
             this.zedGraphControl3.Name = "zedGraphControl3";
             this.zedGraphControl3.ScrollGrace = 0D;
             this.zedGraphControl3.ScrollMaxX = 255D;
@@ -245,7 +204,7 @@
             this.zedGraphControl3.ScrollMinX = 0D;
             this.zedGraphControl3.ScrollMinY = 0D;
             this.zedGraphControl3.ScrollMinY2 = 0D;
-            this.zedGraphControl3.Size = new System.Drawing.Size(203, 217);
+            this.zedGraphControl3.Size = new System.Drawing.Size(203, 193);
             this.zedGraphControl3.TabIndex = 4;
             // 
             // progressBar1
@@ -255,18 +214,88 @@
             this.progressBar1.Size = new System.Drawing.Size(833, 4);
             this.progressBar1.TabIndex = 7;
             // 
+            // zedGraphControl4
+            // 
+            this.zedGraphControl4.Location = new System.Drawing.Point(367, 285);
+            this.zedGraphControl4.Name = "zedGraphControl4";
+            this.zedGraphControl4.ScrollGrace = 0D;
+            this.zedGraphControl4.ScrollMaxX = 255D;
+            this.zedGraphControl4.ScrollMaxY = 0D;
+            this.zedGraphControl4.ScrollMaxY2 = 0D;
+            this.zedGraphControl4.ScrollMinX = 0D;
+            this.zedGraphControl4.ScrollMinY = 0D;
+            this.zedGraphControl4.ScrollMinY2 = 0D;
+            this.zedGraphControl4.Size = new System.Drawing.Size(205, 192);
+            this.zedGraphControl4.TabIndex = 4;
+            // 
+            // zedGraphControl5
+            // 
+            this.zedGraphControl5.Location = new System.Drawing.Point(592, 285);
+            this.zedGraphControl5.Name = "zedGraphControl5";
+            this.zedGraphControl5.ScrollGrace = 0D;
+            this.zedGraphControl5.ScrollMaxX = 255D;
+            this.zedGraphControl5.ScrollMaxY = 0D;
+            this.zedGraphControl5.ScrollMaxY2 = 0D;
+            this.zedGraphControl5.ScrollMinX = 0D;
+            this.zedGraphControl5.ScrollMinY = 0D;
+            this.zedGraphControl5.ScrollMinY2 = 0D;
+            this.zedGraphControl5.Size = new System.Drawing.Size(203, 192);
+            this.zedGraphControl5.TabIndex = 4;
+            // 
+            // zedGraphControl6
+            // 
+            this.zedGraphControl6.Location = new System.Drawing.Point(827, 285);
+            this.zedGraphControl6.Name = "zedGraphControl6";
+            this.zedGraphControl6.ScrollGrace = 0D;
+            this.zedGraphControl6.ScrollMaxX = 255D;
+            this.zedGraphControl6.ScrollMaxY = 0D;
+            this.zedGraphControl6.ScrollMaxY2 = 0D;
+            this.zedGraphControl6.ScrollMinX = 0D;
+            this.zedGraphControl6.ScrollMinY = 0D;
+            this.zedGraphControl6.ScrollMinY2 = 0D;
+            this.zedGraphControl6.Size = new System.Drawing.Size(203, 192);
+            this.zedGraphControl6.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 268);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(248, 209);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "";
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictSource_DoubleClick);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView1.LargeImageList = this.imageList1;
+            this.listView1.Location = new System.Drawing.Point(12, 508);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1049, 131);
+            this.listView1.SmallImageList = this.imageList1;
+            this.listView1.TabIndex = 8;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // FrmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 515);
+            this.ClientSize = new System.Drawing.Size(1095, 651);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.zedGraphControl6);
+            this.Controls.Add(this.zedGraphControl5);
             this.Controls.Add(this.zedGraphControl3);
+            this.Controls.Add(this.zedGraphControl4);
             this.Controls.Add(this.zedGraphControl2);
             this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.button3LoadImage);
@@ -274,18 +303,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictSource);
             this.Name = "FrmMainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,10 +322,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnTimKiemAnh;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button button3LoadImage;
         private ZedGraph.ZedGraphControl zedGraphControl1;
@@ -314,6 +333,12 @@
         private ZedGraph.ZedGraphControl zedGraphControl2;
         private ZedGraph.ZedGraphControl zedGraphControl3;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private ZedGraph.ZedGraphControl zedGraphControl4;
+        private ZedGraph.ZedGraphControl zedGraphControl5;
+        private ZedGraph.ZedGraphControl zedGraphControl6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

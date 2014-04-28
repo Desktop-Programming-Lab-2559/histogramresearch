@@ -1,27 +1,30 @@
-﻿namespace HisogramResearch.Entity
+﻿using System.Collections.Generic;
+
+namespace HisogramResearch.Entity
 {
     public class DistanceDental
     {
         public DistanceDental()
         {
-            Distance1 = new double[256];
-            Distance2 = new double[256];
+            Distance1 = new List<IDistance>();
+            Distance2 = new List<IDistance>();
 
-            Distanceq1 = new double[256];
-            Distanceq2 = new double[256];
+            Distanceq1 = new Dictionary<int, double>();
+            Distanceq2 = new Dictionary<int, double>();
 
 
-            Distancel = new double[256];
+            Distancel = new Dictionary<int, double>();
         }
+        public int ListCount { get; set; }
          public ImageFile ImageFile1 { get; set; }
          public ImageFile ImageFile2 { get; set; }
 
-         public double[] Distance1 { get; set; }
-         public double[] Distance2 { get; set; }
+         public List<IDistance> Distance1 { get; set; }
+         public List<IDistance> Distance2 { get; set; }
 
-         public double[] Distanceq1 { get; set; }
-         public double[] Distanceq2 { get; set; }
+         public Dictionary<int, double> Distanceq1 { get; set; }
+         public Dictionary<int, double> Distanceq2 { get; set; }
 
-         public double[] Distancel { get; set; }
+         public Dictionary<int, double> Distancel { get; set; }
     }
 }
