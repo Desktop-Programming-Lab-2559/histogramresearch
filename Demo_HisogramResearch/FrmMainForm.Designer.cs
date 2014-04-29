@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictSource = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -39,10 +40,6 @@
             this.button3LoadImage = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.btnLast = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
             this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
             this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -50,18 +47,21 @@
             this.zedGraphControl5 = new ZedGraph.ZedGraphControl();
             this.zedGraphControl6 = new ZedGraph.ZedGraphControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.image1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.indexId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictSource
             // 
             this.pictSource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictSource.Location = new System.Drawing.Point(17, 50);
+            this.pictSource.Location = new System.Drawing.Point(250, 68);
             this.pictSource.Name = "pictSource";
-            this.pictSource.Size = new System.Drawing.Size(248, 209);
+            this.pictSource.Size = new System.Drawing.Size(214, 193);
             this.pictSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictSource.TabIndex = 0;
             this.pictSource.TabStop = false;
@@ -71,7 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 1;
@@ -79,14 +79,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(89, 10);
+            this.textBox1.Location = new System.Drawing.Point(88, 10);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(832, 20);
+            this.textBox1.Size = new System.Drawing.Size(903, 20);
             this.textBox1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(927, 9);
+            this.button1.Location = new System.Drawing.Point(997, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 23);
             this.button1.TabIndex = 3;
@@ -96,7 +96,7 @@
             // 
             // btnTimKiemAnh
             // 
-            this.btnTimKiemAnh.Location = new System.Drawing.Point(270, 237);
+            this.btnTimKiemAnh.Location = new System.Drawing.Point(1111, 8);
             this.btnTimKiemAnh.Name = "btnTimKiemAnh";
             this.btnTimKiemAnh.Size = new System.Drawing.Size(75, 23);
             this.btnTimKiemAnh.TabIndex = 3;
@@ -112,7 +112,7 @@
             // 
             // button3LoadImage
             // 
-            this.button3LoadImage.Location = new System.Drawing.Point(966, 8);
+            this.button3LoadImage.Location = new System.Drawing.Point(1030, 8);
             this.button3LoadImage.Name = "button3LoadImage";
             this.button3LoadImage.Size = new System.Drawing.Size(75, 23);
             this.button3LoadImage.TabIndex = 3;
@@ -122,7 +122,7 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(367, 66);
+            this.zedGraphControl1.Location = new System.Drawing.Point(507, 68);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 255D;
@@ -137,51 +137,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 34);
+            this.label2.Location = new System.Drawing.Point(247, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Chọn ảnh:";
             // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(17, 482);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(31, 23);
-            this.btnPreview.TabIndex = 6;
-            this.btnPreview.Text = "<";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Location = new System.Drawing.Point(54, 483);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(35, 23);
-            this.btnFirst.TabIndex = 6;
-            this.btnFirst.Text = "<<";
-            this.btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // btnLast
-            // 
-            this.btnLast.Location = new System.Drawing.Point(95, 483);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(35, 23);
-            this.btnLast.TabIndex = 6;
-            this.btnLast.Text = ">>";
-            this.btnLast.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(136, 483);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(35, 23);
-            this.btnNext.TabIndex = 6;
-            this.btnNext.Text = ">";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(592, 66);
+            this.zedGraphControl2.Location = new System.Drawing.Point(732, 68);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 255D;
@@ -195,7 +159,7 @@
             // 
             // zedGraphControl3
             // 
-            this.zedGraphControl3.Location = new System.Drawing.Point(827, 66);
+            this.zedGraphControl3.Location = new System.Drawing.Point(967, 68);
             this.zedGraphControl3.Name = "zedGraphControl3";
             this.zedGraphControl3.ScrollGrace = 0D;
             this.zedGraphControl3.ScrollMaxX = 255D;
@@ -209,14 +173,14 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(88, 32);
+            this.progressBar1.Location = new System.Drawing.Point(87, 32);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(833, 4);
+            this.progressBar1.Size = new System.Drawing.Size(904, 4);
             this.progressBar1.TabIndex = 7;
             // 
             // zedGraphControl4
             // 
-            this.zedGraphControl4.Location = new System.Drawing.Point(367, 285);
+            this.zedGraphControl4.Location = new System.Drawing.Point(507, 287);
             this.zedGraphControl4.Name = "zedGraphControl4";
             this.zedGraphControl4.ScrollGrace = 0D;
             this.zedGraphControl4.ScrollMaxX = 255D;
@@ -230,7 +194,7 @@
             // 
             // zedGraphControl5
             // 
-            this.zedGraphControl5.Location = new System.Drawing.Point(592, 285);
+            this.zedGraphControl5.Location = new System.Drawing.Point(732, 287);
             this.zedGraphControl5.Name = "zedGraphControl5";
             this.zedGraphControl5.ScrollGrace = 0D;
             this.zedGraphControl5.ScrollMaxX = 255D;
@@ -244,7 +208,7 @@
             // 
             // zedGraphControl6
             // 
-            this.zedGraphControl6.Location = new System.Drawing.Point(827, 285);
+            this.zedGraphControl6.Location = new System.Drawing.Point(967, 287);
             this.zedGraphControl6.Name = "zedGraphControl6";
             this.zedGraphControl6.ScrollGrace = 0D;
             this.zedGraphControl6.ScrollMaxX = 255D;
@@ -259,38 +223,75 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 268);
+            this.pictureBox1.Location = new System.Drawing.Point(249, 287);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(248, 209);
+            this.pictureBox1.Size = new System.Drawing.Size(215, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "";
             this.pictureBox1.DoubleClick += new System.EventHandler(this.pictSource_DoubleClick);
             // 
-            // listView1
+            // dataGridView1
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listView1.LargeImageList = this.imageList1;
-            this.listView1.Location = new System.Drawing.Point(12, 508);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1049, 131);
-            this.listView1.SmallImageList = this.imageList1;
-            this.listView1.TabIndex = 8;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.image1,
+            this.Column1,
+            this.indexId});
+            this.dataGridView1.Location = new System.Drawing.Point(16, 68);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 150;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(203, 411);
+            this.dataGridView1.TabIndex = 8;
+            // 
+            // image1
+            // 
+            this.image1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.image1.DataPropertyName = "Image";
+            this.image1.HeaderText = "Ảnh";
+            this.image1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.image1.Name = "image1";
+            this.image1.ReadOnly = true;
+            this.image1.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PathFile";
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // indexId
+            // 
+            this.indexId.DataPropertyName = "IndexId";
+            this.indexId.HeaderText = "MyIndex";
+            this.indexId.Name = "indexId";
+            this.indexId.ReadOnly = true;
+            this.indexId.Visible = false;
             // 
             // FrmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 651);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(1207, 495);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.btnLast);
-            this.Controls.Add(this.btnFirst);
-            this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.zedGraphControl6);
             this.Controls.Add(this.zedGraphControl5);
@@ -309,6 +310,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,10 +328,6 @@
         private System.Windows.Forms.Button button3LoadImage;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnPreview;
-        private System.Windows.Forms.Button btnFirst;
-        private System.Windows.Forms.Button btnLast;
-        private System.Windows.Forms.Button btnNext;
         private ZedGraph.ZedGraphControl zedGraphControl2;
         private ZedGraph.ZedGraphControl zedGraphControl3;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -337,8 +335,10 @@
         private ZedGraph.ZedGraphControl zedGraphControl5;
         private ZedGraph.ZedGraphControl zedGraphControl6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewImageColumn image1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn indexId;
     }
 }
 

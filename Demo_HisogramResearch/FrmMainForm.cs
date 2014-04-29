@@ -108,7 +108,7 @@ namespace HisogramResearch
         {
             btnTimKiemAnh.Enabled = false;
             LoadImage();
-            //GetOfffline();
+            GetOfffline();
            btnTimKiemAnh.Enabled = true;
 
         }
@@ -160,6 +160,8 @@ namespace HisogramResearch
         private string FileDataName = "/DataFile.json";
         private string FileDistance = "/DataDistance.json";
         private List<ImageFile> _directory = new List<ImageFile>(); 
+
+        private  List<ImageFile>  _listDisPlay = new List<ImageFile>();
         private void LoadImage()
         {
             string[] files = Directory.GetFiles(textBox1.Text);
@@ -186,12 +188,7 @@ namespace HisogramResearch
 
                 
             }
-            for (int j = 0; j < this.imageList1.Images.Count; j++)
-            {
-                ListViewItem item = new ListViewItem();
-                item.ImageIndex = j;
-                this.listView1.Items.Add(item);
-            }
+            
             var data = JsonUtils.Serialize(_directory);
             DirectionIO.WriteAllText(textBox1.Text + FileDataName, data);
         }
@@ -263,7 +260,7 @@ namespace HisogramResearch
                     throw new Exception(@"Loi khong tim thay khoang cach tuong ung ");
                 }
             }
-            var dicValueInde = new Dictionary<double, int>();
+           
            
             var listdistance = _distanceDental.Distancel.Values.ToList();
             listdistance.Sort();
@@ -273,14 +270,15 @@ namespace HisogramResearch
                 foreach (var b in listvalue)
                 {
                     var imagefile = _directory.Find(a => a.Index == b.Key);
-                    imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
+                    //imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
+                    _listDisPlay.Add(imagefile.Clone() as ImageFile);
                 }
             }
         }
 
         private void btnTimKiemAnh_Click(object sender, EventArgs e)
         {
-
+            _listDisPlay.Clear();
             if (pictSource.Image == null) return;
             btnTimKiemAnh.Enabled = false;
             var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(pictSource.Image));
@@ -289,8 +287,12 @@ namespace HisogramResearch
                     HistogramResult = histogramResult,
                     Color = HistogramUtils.GetMatrix(histogramResult.Histogram, histogramResult.RedColor, histogramResult.CumulativeHistogram)
                 };
+
              FindingImage(imagefile);
-            
+             if (_listDisPlay.Count > 0)
+             {
+                 dataGridView1.DataSource = _listDisPlay;
+             }
             btnTimKiemAnh.Enabled = true;
         }
 
