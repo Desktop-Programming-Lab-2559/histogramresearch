@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictSource = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,13 +46,18 @@
             this.zedGraphControl4 = new ZedGraph.ZedGraphControl();
             this.zedGraphControl5 = new ZedGraph.ZedGraphControl();
             this.zedGraphControl6 = new ZedGraph.ZedGraphControl();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDetail = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.image1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PathFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.indexId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPhanTich = new System.Windows.Forms.Button();
+            this.cboKetQua = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,14 +86,14 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(88, 10);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(903, 20);
+            this.textBox1.Size = new System.Drawing.Size(870, 20);
             this.textBox1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(997, 9);
+            this.button1.Location = new System.Drawing.Point(964, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
+            this.button1.Size = new System.Drawing.Size(25, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -96,9 +101,9 @@
             // 
             // btnTimKiemAnh
             // 
-            this.btnTimKiemAnh.Location = new System.Drawing.Point(1111, 8);
+            this.btnTimKiemAnh.Location = new System.Drawing.Point(1139, 10);
             this.btnTimKiemAnh.Name = "btnTimKiemAnh";
-            this.btnTimKiemAnh.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiemAnh.Size = new System.Drawing.Size(66, 23);
             this.btnTimKiemAnh.TabIndex = 3;
             this.btnTimKiemAnh.Text = "Tìm kiếm";
             this.btnTimKiemAnh.UseVisualStyleBackColor = true;
@@ -112,11 +117,11 @@
             // 
             // button3LoadImage
             // 
-            this.button3LoadImage.Location = new System.Drawing.Point(1030, 8);
+            this.button3LoadImage.Location = new System.Drawing.Point(995, 10);
             this.button3LoadImage.Name = "button3LoadImage";
-            this.button3LoadImage.Size = new System.Drawing.Size(75, 23);
+            this.button3LoadImage.Size = new System.Drawing.Size(66, 23);
             this.button3LoadImage.TabIndex = 3;
-            this.button3LoadImage.Text = "Load";
+            this.button3LoadImage.Text = "Tải";
             this.button3LoadImage.UseVisualStyleBackColor = true;
             this.button3LoadImage.Click += new System.EventHandler(this.button3LoadImage_Click);
             // 
@@ -137,11 +142,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(247, 50);
+            this.label2.Location = new System.Drawing.Point(249, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Chọn ảnh:";
+            this.label2.Text = "Chọn ảnh cần tìm:";
             // 
             // zedGraphControl2
             // 
@@ -175,7 +180,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(87, 32);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(904, 4);
+            this.progressBar1.Size = new System.Drawing.Size(871, 4);
             this.progressBar1.TabIndex = 7;
             // 
             // zedGraphControl4
@@ -220,34 +225,34 @@
             this.zedGraphControl6.Size = new System.Drawing.Size(203, 192);
             this.zedGraphControl6.TabIndex = 4;
             // 
-            // pictureBox1
+            // pictureBoxDetail
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(249, 287);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(215, 192);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "";
-            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictSource_DoubleClick);
+            this.pictureBoxDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxDetail.Location = new System.Drawing.Point(249, 287);
+            this.pictureBoxDetail.Name = "pictureBoxDetail";
+            this.pictureBoxDetail.Size = new System.Drawing.Size(215, 192);
+            this.pictureBoxDetail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxDetail.TabIndex = 0;
+            this.pictureBoxDetail.TabStop = false;
+            this.pictureBoxDetail.Tag = "";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.image1,
-            this.Column1,
+            this.PathFile,
             this.indexId});
             this.dataGridView1.Location = new System.Drawing.Point(16, 68);
             this.dataGridView1.MultiSelect = false;
@@ -258,6 +263,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(203, 411);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // image1
             // 
@@ -269,13 +275,13 @@
             this.image1.ReadOnly = true;
             this.image1.Width = 200;
             // 
-            // Column1
+            // PathFile
             // 
-            this.Column1.DataPropertyName = "PathFile";
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
+            this.PathFile.DataPropertyName = "PathFile";
+            this.PathFile.HeaderText = "Column1";
+            this.PathFile.Name = "PathFile";
+            this.PathFile.ReadOnly = true;
+            this.PathFile.Visible = false;
             // 
             // indexId
             // 
@@ -285,13 +291,68 @@
             this.indexId.ReadOnly = true;
             this.indexId.Visible = false;
             // 
+            // btnPhanTich
+            // 
+            this.btnPhanTich.Location = new System.Drawing.Point(1067, 10);
+            this.btnPhanTich.Name = "btnPhanTich";
+            this.btnPhanTich.Size = new System.Drawing.Size(66, 23);
+            this.btnPhanTich.TabIndex = 9;
+            this.btnPhanTich.Text = "Phân tích";
+            this.btnPhanTich.UseVisualStyleBackColor = true;
+            this.btnPhanTich.Click += new System.EventHandler(this.btnPhanTich_Click);
+            // 
+            // cboKetQua
+            // 
+            this.cboKetQua.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboKetQua.FormattingEnabled = true;
+            this.cboKetQua.Items.AddRange(new object[] {
+            "Kết quả",
+            "Tất cả"});
+            this.cboKetQua.Location = new System.Drawing.Point(16, 44);
+            this.cboKetQua.Name = "cboKetQua";
+            this.cboKetQua.Size = new System.Drawing.Size(203, 21);
+            this.cboKetQua.TabIndex = 10;
+            this.cboKetQua.SelectedIndexChanged += new System.EventHandler(this.cboKetQua_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(549, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Biểu đồ mầu cục bộ (RGB)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(783, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Biểu đồ mầu đỏ (R)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1012, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Biểu đồ mầu tích lũy";
+            // 
             // FrmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1207, 495);
+            this.ClientSize = new System.Drawing.Size(1231, 495);
+            this.Controls.Add(this.cboKetQua);
+            this.Controls.Add(this.btnPhanTich);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.zedGraphControl6);
             this.Controls.Add(this.zedGraphControl5);
@@ -304,12 +365,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxDetail);
             this.Controls.Add(this.pictSource);
             this.Name = "FrmMainForm";
-            this.Text = "Form1";
+            this.Text = "Tìm kiếm ảnh theo biểu đồ mầu";
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -334,11 +395,16 @@
         private ZedGraph.ZedGraphControl zedGraphControl4;
         private ZedGraph.ZedGraphControl zedGraphControl5;
         private ZedGraph.ZedGraphControl zedGraphControl6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxDetail;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewImageColumn image1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PathFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn indexId;
+        private System.Windows.Forms.Button btnPhanTich;
+        private System.Windows.Forms.ComboBox cboKetQua;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

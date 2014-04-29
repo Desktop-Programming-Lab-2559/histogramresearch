@@ -10,6 +10,7 @@ namespace HisogramResearch.Utils
         {
             try
             {
+                if (!DirectionIO.IsFileImage(file)) return null;
                 var picture = new Bitmap(file);
                 long[] myHistogram = new long[256];
                 long[] redcolor = new long[256];

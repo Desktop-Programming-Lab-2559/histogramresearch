@@ -1,9 +1,21 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace HisogramResearch.Utils
 {
     public class DirectionIO
     {
+        public static readonly List<string> ImageExtensions = new List<string> { ".JPG", ".JPEG", ".JPE", ".BMP", ".GIF", ".PNG" };
+
+        public static bool IsFileImage(string file)
+        {
+            var extension = Path.GetExtension(file);
+            if (extension != null && ImageExtensions.Contains(extension.ToUpperInvariant()))
+            {
+                return true;
+            }
+            return false;
+        }
         private static string _path = "";
         public static string GetPath()
         {

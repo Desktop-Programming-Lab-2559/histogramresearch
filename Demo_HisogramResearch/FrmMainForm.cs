@@ -12,7 +12,15 @@ namespace HisogramResearch
 {
     public partial class FrmMainForm : Form
     {
-        public Dictionary<string, HistogramResult> DicPicture = new Dictionary<string, HistogramResult>(); 
+       // public Dictionary<string, HistogramResult> DicPicture = new Dictionary<string, HistogramResult>();
+        private DistanceDental _distanceDental = new DistanceDental();
+        private string FileDataName = "/DataFile.json";
+        private string FileDistance = "/DataDistance.json";
+        private List<ImageFile> _directory = new List<ImageFile>();
+
+        private List<ImageGrid> _listDisPlay = new List<ImageGrid>();
+
+
         public FrmMainForm()
         {
             InitializeComponent();
@@ -25,27 +33,32 @@ namespace HisogramResearch
 
             ofd.CheckFileExists = true;
             ofd.CheckPathExists = true;
+            var result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                if (pictSource.Image != null)
+                    pictSource.Image.Dispose();
+                if (ofd.FileName.Length > 0)
+                    pictSource.Image = Image.FromFile(ofd.FileName);
 
-            ofd.ShowDialog();
-
-            if (pictSource.Image != null)
-                pictSource.Image.Dispose();
-            if (ofd.FileName.Length > 0)
-                pictSource.Image = Image.FromFile(ofd.FileName);
-
-            LoadImageSelect();
+                LoadImageSelect();
+            }
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Chọn thư viện ảnh";
+            fbd.ShowNewFolderButton = false;
+             
             DialogResult result = fbd.ShowDialog();
-
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                 textBox1.Text = fbd.SelectedPath;
+            }
+            
             //string[] files = Directory.GetFiles(fbd.SelectedPath);
-
-
-            textBox1.Text = fbd.SelectedPath;
         }
         private void Draw(ZedGraphControl control, PointPairList spl1, string nameGraph)
         {
@@ -89,6 +102,7 @@ namespace HisogramResearch
 
             PointPairList spl1 = new PointPairList();
             PointPairList spl2 = new PointPairList();
+            PointPairList spl3 = new PointPairList();
             for (int i = 0; i < histogramResult.Histogram.Length; i++)
             {
                 spl1.Add((double)i, (double)histogramResult.Histogram[i]);
@@ -98,19 +112,84 @@ namespace HisogramResearch
             {
                 spl2.Add((double)i, (double)histogramResult.RedColor[i]);
             }
+            for (int i = 0; i < histogramResult.CumulativeHistogram.Length; i++)
+            {
+                spl3.Add((double)i, (double)histogramResult.CumulativeHistogram[i]);
+            }
 
 
             Draw(zedGraphControl1, spl1, "Histogram");
             Draw(zedGraphControl2, spl2, "Red Color");
+            Draw(zedGraphControl3, spl3, "Cumulative Color");
+        }
+
+        private void LoadImageSelectRult(int index)
+        {
+            if (pictSource.Image == null) return;
+            var histogramResult = _directory.Find(a => a.Index == index);
+            if (histogramResult == null) return;
+            //var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(pictureBoxDetail.Image));
+            // GraphPane object holds one or more Curve objects (or plots)
+
+            PointPairList spl1 = new PointPairList();
+            PointPairList spl2 = new PointPairList();
+            PointPairList spl3 = new PointPairList();
+            for (int i = 0; i < histogramResult.HistogramResult.Histogram.Length; i++)
+            {
+                spl1.Add((double)i, (double)histogramResult.HistogramResult.Histogram[i]);
+            }
+
+            for (int i = 0; i < histogramResult.HistogramResult.RedColor.Length; i++)
+            {
+                spl2.Add((double)i, (double)histogramResult.HistogramResult.RedColor[i]);
+            }
+            for (int i = 0; i < histogramResult.HistogramResult.CumulativeHistogram.Length; i++)
+            {
+                spl3.Add((double)i, (double)histogramResult.HistogramResult.CumulativeHistogram[i]);
+            }
+
+
+            Draw(zedGraphControl4, spl1, "Histogram");
+            Draw(zedGraphControl5, spl2, "Red Color");
+            Draw(zedGraphControl6, spl3, "Cumulative Color");
+        }
+
+        private void btnPhanTich_Click(object sender, EventArgs e)
+        {
+            btnPhanTich.Enabled = false;
+            LoadImage();
+            GetOfffline();
+            btnPhanTich.Enabled = true;
         }
 
         private void button3LoadImage_Click(object sender, EventArgs e)
         {
-            btnTimKiemAnh.Enabled = false;
-            LoadImage();
-            GetOfffline();
-           btnTimKiemAnh.Enabled = true;
+            button3LoadImage.Enabled = false;
+            bool loatdata = false;
+            var patheFolder = textBox1.Text + FileDistance;
+            var patheFile = textBox1.Text + FileDataName;
+            if (DirectionIO.IsExistFile(patheFolder))
+            {
+                var data = DirectionIO.ReadAllText(patheFolder);
+                _distanceDental = JsonUtils.Deserialize<DistanceDental>(data);
 
+            }
+            else
+                loatdata = true;
+
+            if (DirectionIO.IsExistFile(patheFile))
+            {
+                var data = DirectionIO.ReadAllText(patheFile);
+                _directory = JsonUtils.Deserialize<List<ImageFile>>(data);
+
+            }
+            else
+                loatdata = true;
+            if(loatdata)
+            {
+                btnPhanTich_Click(btnPhanTich,new EventArgs());
+            }
+            button3LoadImage.Enabled = true;
         }
         public void CreateChart()
         {
@@ -155,15 +234,10 @@ namespace HisogramResearch
             BarItem.CreateBarLabels(myPane, false, "f0");
 
         }
-
-        private DistanceDental _distanceDental= new DistanceDental();
-        private string FileDataName = "/DataFile.json";
-        private string FileDistance = "/DataDistance.json";
-        private List<ImageFile> _directory = new List<ImageFile>(); 
-
-        private  List<ImageFile>  _listDisPlay = new List<ImageFile>();
+       
         private void LoadImage()
         {
+            if(string.IsNullOrWhiteSpace(textBox1.Text)) return;
             string[] files = Directory.GetFiles(textBox1.Text);
             _directory.Clear();
             int index = 0;
@@ -181,7 +255,6 @@ namespace HisogramResearch
                             Color = HistogramUtils.GetMatrix(histogramResult.Histogram, histogramResult.RedColor, histogramResult.CumulativeHistogram)
                         });
                     index++;
-                    //DicPicture[file] = histogramResult;
                     imageList1.Images.Add(index.ToString(), Image.FromFile(file));
                 }
                 SetProgressBarNext();
@@ -219,19 +292,10 @@ namespace HisogramResearch
                 SetProgressBarNext();
             }
 
-            var data = JsonUtils.Serialize(_directory);
+            var data = JsonUtils.Serialize(_distanceDental);
             DirectionIO.WriteAllText(textBox1.Text + FileDistance, data);
         }
-        private List<string> FindingImage(HistogramResult ifind)
-        {
-            var list = new List<string>();
-            foreach (var histogram in DicPicture)
-            {
-                 if(histogram.Value.CompareTo(ifind) == 1)
-                     list.Add(histogram.Key);
-            }
-            return list;
-        }
+       
 
         /// <summary>
         /// xu ly online. tim kiem anh.
@@ -271,13 +335,21 @@ namespace HisogramResearch
                 {
                     var imagefile = _directory.Find(a => a.Index == b.Key);
                     //imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
-                    _listDisPlay.Add(imagefile.Clone() as ImageFile);
+                    if (imagefile !=null)
+                    _listDisPlay.Add(new ImageGrid
+                        {
+                            Distance = d,
+                            Image = Image.FromFile(imagefile.FilePath),
+                            PathFile = imagefile.FilePath,
+                            indexId = imagefile.Index,
+                        });
                 }
             }
         }
 
         private void btnTimKiemAnh_Click(object sender, EventArgs e)
         {
+            
             _listDisPlay.Clear();
             if (pictSource.Image == null) return;
             btnTimKiemAnh.Enabled = false;
@@ -291,7 +363,19 @@ namespace HisogramResearch
              FindingImage(imagefile);
              if (_listDisPlay.Count > 0)
              {
-                 dataGridView1.DataSource = _listDisPlay;
+                 if (cboKetQua.SelectedIndex == 0)
+                 {
+                     var listSource = new List<ImageGrid>(); 
+                     foreach (var imageGrid in _listDisPlay)
+                     {
+                         if (imageGrid.Distance > 100) break;
+                         listSource.Add(imageGrid);
+                     }
+                     dataGridView1.DataSource = listSource;
+                     dataGridView1.Refresh();
+                 }
+                 cboKetQua.SelectedIndex = 0;
+               
              }
             btnTimKiemAnh.Enabled = true;
         }
@@ -312,5 +396,42 @@ namespace HisogramResearch
                 progressBar1.Visible = false;
         }
         #endregion
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            var couter = dataGridView1.SelectedRows.Count;
+            if (couter > 0)
+            {
+                var index = dataGridView1.SelectedRows[0].Index;
+                var filepath = dataGridView1.Rows[index].Cells[PathFile.Name].Value.ToString();
+                pictureBoxDetail.Image = Image.FromFile(filepath);
+
+                var myindex = dataGridView1.Rows[index].Cells[indexId.Name].Value;
+
+                LoadImageSelectRult(Convert.ToInt32(myindex));
+            }
+        }
+       // private List<ImageGrid> listSource = new List<ImageGrid>(); 
+        private void cboKetQua_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var listSource = new List<ImageGrid>(); 
+            if (cboKetQua.SelectedIndex == 0)
+            {
+                foreach (var imageGrid in _listDisPlay)
+                {
+                    if(imageGrid.Distance > 100) break;
+                    listSource.Add(imageGrid);
+                }
+            }
+            else
+            {
+                listSource.AddRange(_listDisPlay);
+            }
+            dataGridView1.DataSource = listSource;
+            dataGridView1.Refresh();
+        }
+
+       
+       
     }
 }

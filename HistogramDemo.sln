@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisogramResearch", "Demo_HisogramResearch\HisogramResearch.csproj", "{BD4179DC-EEA1-4734-B299-5E1F0D573A50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "imageTest", "C:\Users\probook\Desktop\imageTest\imageTest.csproj", "{391FC515-198D-4ECB-BBBB-46A02EEBB500}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,12 +16,6 @@ Global
 		{BD4179DC-EEA1-4734-B299-5E1F0D573A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD4179DC-EEA1-4734-B299-5E1F0D573A50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD4179DC-EEA1-4734-B299-5E1F0D573A50}.Release|x86.ActiveCfg = Release|Any CPU
-		{391FC515-198D-4ECB-BBBB-46A02EEBB500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{391FC515-198D-4ECB-BBBB-46A02EEBB500}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{391FC515-198D-4ECB-BBBB-46A02EEBB500}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{391FC515-198D-4ECB-BBBB-46A02EEBB500}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{391FC515-198D-4ECB-BBBB-46A02EEBB500}.Release|Any CPU.Build.0 = Release|Any CPU
-		{391FC515-198D-4ECB-BBBB-46A02EEBB500}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
