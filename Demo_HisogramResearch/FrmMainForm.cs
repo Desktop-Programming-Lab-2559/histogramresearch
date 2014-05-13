@@ -64,7 +64,7 @@ namespace HisogramResearch
         {
             if (pictSource.Image == null) return;
 
-            var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(pictSource.Image));
+           // var histogramResult = HistogramUtils.GetHistogramTB(new Bitmap(pictSource.Image));
 
           
             control.GraphPane.CurveList.Clear();
