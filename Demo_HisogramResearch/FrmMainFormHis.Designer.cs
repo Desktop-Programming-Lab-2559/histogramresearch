@@ -1,6 +1,6 @@
 ﻿namespace HisogramResearch
 {
-    partial class FrmMainForm
+    partial class FrmMainFormHis
     {
         /// <summary>
         /// Required designer variable.
@@ -87,12 +87,12 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(88, 10);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(870, 20);
+            this.textBox1.Size = new System.Drawing.Size(412, 20);
             this.textBox1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(964, 10);
+            this.button1.Location = new System.Drawing.Point(515, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 23);
             this.button1.TabIndex = 3;
@@ -102,7 +102,7 @@
             // 
             // btnTimKiemAnh
             // 
-            this.btnTimKiemAnh.Location = new System.Drawing.Point(1139, 10);
+            this.btnTimKiemAnh.Location = new System.Drawing.Point(690, 8);
             this.btnTimKiemAnh.Name = "btnTimKiemAnh";
             this.btnTimKiemAnh.Size = new System.Drawing.Size(66, 23);
             this.btnTimKiemAnh.TabIndex = 3;
@@ -118,7 +118,7 @@
             // 
             // button3LoadImage
             // 
-            this.button3LoadImage.Location = new System.Drawing.Point(995, 10);
+            this.button3LoadImage.Location = new System.Drawing.Point(546, 8);
             this.button3LoadImage.Name = "button3LoadImage";
             this.button3LoadImage.Size = new System.Drawing.Size(66, 23);
             this.button3LoadImage.TabIndex = 3;
@@ -162,6 +162,7 @@
             this.zedGraphControl2.ScrollMinY2 = 0D;
             this.zedGraphControl2.Size = new System.Drawing.Size(203, 193);
             this.zedGraphControl2.TabIndex = 4;
+            this.zedGraphControl2.Visible = false;
             // 
             // zedGraphControl3
             // 
@@ -176,12 +177,13 @@
             this.zedGraphControl3.ScrollMinY2 = 0D;
             this.zedGraphControl3.Size = new System.Drawing.Size(203, 193);
             this.zedGraphControl3.TabIndex = 4;
+            this.zedGraphControl3.Visible = false;
             // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(87, 32);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(871, 4);
+            this.progressBar1.Size = new System.Drawing.Size(413, 4);
             this.progressBar1.TabIndex = 7;
             // 
             // zedGraphControl4
@@ -211,6 +213,7 @@
             this.zedGraphControl5.ScrollMinY2 = 0D;
             this.zedGraphControl5.Size = new System.Drawing.Size(203, 192);
             this.zedGraphControl5.TabIndex = 4;
+            this.zedGraphControl5.Visible = false;
             // 
             // zedGraphControl6
             // 
@@ -225,6 +228,7 @@
             this.zedGraphControl6.ScrollMinY2 = 0D;
             this.zedGraphControl6.Size = new System.Drawing.Size(203, 192);
             this.zedGraphControl6.TabIndex = 4;
+            this.zedGraphControl6.Visible = false;
             // 
             // pictureBoxDetail
             // 
@@ -294,7 +298,7 @@
             // 
             // btnPhanTich
             // 
-            this.btnPhanTich.Location = new System.Drawing.Point(1067, 10);
+            this.btnPhanTich.Location = new System.Drawing.Point(618, 8);
             this.btnPhanTich.Name = "btnPhanTich";
             this.btnPhanTich.Size = new System.Drawing.Size(66, 23);
             this.btnPhanTich.TabIndex = 9;
@@ -332,6 +336,7 @@
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Biểu đồ mầu đỏ (R)";
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -341,21 +346,22 @@
             this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Biểu đồ mầu tích lũy";
+            this.label5.Visible = false;
             // 
             // lblKetQua
             // 
             this.lblKetQua.AutoSize = true;
-            this.lblKetQua.Location = new System.Drawing.Point(13, 485);
+            this.lblKetQua.Location = new System.Drawing.Point(13, 486);
             this.lblKetQua.Name = "lblKetQua";
             this.lblKetQua.Size = new System.Drawing.Size(47, 13);
             this.lblKetQua.TabIndex = 5;
             this.lblKetQua.Text = "Kết quả:";
             // 
-            // FrmMainForm
+            // FrmMainFormHis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1231, 507);
+            this.ClientSize = new System.Drawing.Size(768, 508);
             this.Controls.Add(this.cboKetQua);
             this.Controls.Add(this.btnPhanTich);
             this.Controls.Add(this.dataGridView1);
@@ -378,7 +384,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxDetail);
             this.Controls.Add(this.pictSource);
-            this.Name = "FrmMainForm";
+            this.Name = "FrmMainFormHis";
             this.Text = "Tìm kiếm ảnh theo biểu đồ mầu";
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetail)).EndInit();

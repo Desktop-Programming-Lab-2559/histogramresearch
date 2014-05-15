@@ -139,13 +139,20 @@ namespace HisogramResearch.Utils
         /// <param name="color2"></param>
         /// <param name="color3"></param>
         /// <returns></returns>
-        public static long[] GetMatrix(long[] color1, long[] color2, long[] color3)
+        public static long[] GetMatrix(long[] color1, long[] color2, long[] color3, bool iscolor1 = false)
         {
             long[] total = new long[256];
-            for (int i = 0; i < 256; i++)
-            {
-                total[i] = 2 * color1[i] + color2[i] + color3[i];
-            }
+            if (iscolor1)
+            
+                for (int i = 0; i < 256; i++)
+                {
+                    total[i] =  color1[i];
+                }
+            else 
+                for (int i = 0; i < 256; i++)
+                {
+                    total[i] = 2 * color1[i] + color2[i] + color3[i];
+                }
             return total;
         }
         
