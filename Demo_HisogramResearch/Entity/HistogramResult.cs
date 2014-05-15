@@ -5,8 +5,8 @@ namespace HisogramResearch.Entity
     public class HistogramResult: IDisposable
     {
         public long[] RedColor { get; set; }
-        public long[] Histogram { get; set; }
-        public long[] CumulativeHistogram { get; set; }
+        public double[] Histogram { get; set; }
+        public double[] CumulativeHistogram { get; set; }
 
 
         public int CompareTo(HistogramResult compare)

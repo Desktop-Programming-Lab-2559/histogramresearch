@@ -12,10 +12,10 @@ namespace HisogramResearch.Utils
             {
                 if (!DirectionIO.IsFileImage(file)) return null;
                 var picture = new Bitmap(file);
-                long[] myHistogram = new long[256];
+                double[] myHistogram = new double[256];
                 long[] redcolor = new long[256];
-                long[] cummulativeHis = new long[256];
-
+                double[] cummulativeHis = new double[256];
+                int imageSize = picture.Size.Width*picture.Size.Height;
                 for (int i = 0; i < picture.Size.Width; i++)
                     for (int j = 0; j < picture.Size.Height; j++)
                     {
@@ -31,6 +31,10 @@ namespace HisogramResearch.Utils
 
                         redcolor[c.R]++;
                     }
+                for (int i = 1; i < 256; i++)
+                {
+                    myHistogram[i] = myHistogram[i] / imageSize;
+                }
                 cummulativeHis[0] = myHistogram[0];
                 for (int i = 1; i < 256; i++)
                 {
@@ -54,10 +58,11 @@ namespace HisogramResearch.Utils
         {
             try
             {
-                
-                long[] myHistogram = new long[256];
+
+                double[] myHistogram = new double[256];
                 long[] redcolor = new long[256];
-                long[] cummulativeHis = new long[256];
+                double[] cummulativeHis = new double[256];
+                int imageSize = picture.Width * picture.Height;
 
                 for (int i = 0; i < picture.Size.Width; i++)
                     for (int j = 0; j < picture.Size.Height; j++)
@@ -74,6 +79,12 @@ namespace HisogramResearch.Utils
 
                         redcolor[c.R]++;
                     }
+
+                for (int i = 1; i < 256; i++)
+                {
+                    var s = (myHistogram[i] / imageSize);
+                    myHistogram[i] = s;
+                }
                 cummulativeHis[0] = myHistogram[0];
                 for (int i = 1; i < 256; i++)
                 {
