@@ -49,8 +49,9 @@
             this.pictureBoxDetail = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.image1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.PathFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.indexId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PathFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPhanTich = new System.Windows.Forms.Button();
             this.cboKetQua = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             // pictSource
             // 
             this.pictSource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictSource.Location = new System.Drawing.Point(250, 68);
+            this.pictSource.Location = new System.Drawing.Point(309, 68);
             this.pictSource.Name = "pictSource";
             this.pictSource.Size = new System.Drawing.Size(214, 193);
             this.pictSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -128,7 +129,7 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(507, 68);
+            this.zedGraphControl1.Location = new System.Drawing.Point(552, 68);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 255D;
@@ -137,13 +138,13 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(205, 193);
+            this.zedGraphControl1.Size = new System.Drawing.Size(467, 193);
             this.zedGraphControl1.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(249, 50);
+            this.label2.Location = new System.Drawing.Point(308, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 5;
@@ -151,7 +152,7 @@
             // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(732, 68);
+            this.zedGraphControl2.Location = new System.Drawing.Point(1016, 68);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 255D;
@@ -166,7 +167,7 @@
             // 
             // zedGraphControl3
             // 
-            this.zedGraphControl3.Location = new System.Drawing.Point(967, 68);
+            this.zedGraphControl3.Location = new System.Drawing.Point(1251, 68);
             this.zedGraphControl3.Name = "zedGraphControl3";
             this.zedGraphControl3.ScrollGrace = 0D;
             this.zedGraphControl3.ScrollMaxX = 255D;
@@ -188,7 +189,7 @@
             // 
             // zedGraphControl4
             // 
-            this.zedGraphControl4.Location = new System.Drawing.Point(507, 287);
+            this.zedGraphControl4.Location = new System.Drawing.Point(552, 287);
             this.zedGraphControl4.Name = "zedGraphControl4";
             this.zedGraphControl4.ScrollGrace = 0D;
             this.zedGraphControl4.ScrollMaxX = 255D;
@@ -197,12 +198,12 @@
             this.zedGraphControl4.ScrollMinX = 0D;
             this.zedGraphControl4.ScrollMinY = 0D;
             this.zedGraphControl4.ScrollMinY2 = 0D;
-            this.zedGraphControl4.Size = new System.Drawing.Size(205, 192);
+            this.zedGraphControl4.Size = new System.Drawing.Size(467, 192);
             this.zedGraphControl4.TabIndex = 4;
             // 
             // zedGraphControl5
             // 
-            this.zedGraphControl5.Location = new System.Drawing.Point(732, 287);
+            this.zedGraphControl5.Location = new System.Drawing.Point(1016, 287);
             this.zedGraphControl5.Name = "zedGraphControl5";
             this.zedGraphControl5.ScrollGrace = 0D;
             this.zedGraphControl5.ScrollMaxX = 255D;
@@ -217,7 +218,7 @@
             // 
             // zedGraphControl6
             // 
-            this.zedGraphControl6.Location = new System.Drawing.Point(967, 287);
+            this.zedGraphControl6.Location = new System.Drawing.Point(1251, 287);
             this.zedGraphControl6.Name = "zedGraphControl6";
             this.zedGraphControl6.ScrollGrace = 0D;
             this.zedGraphControl6.ScrollMaxX = 255D;
@@ -233,7 +234,7 @@
             // pictureBoxDetail
             // 
             this.pictureBoxDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxDetail.Location = new System.Drawing.Point(249, 287);
+            this.pictureBoxDetail.Location = new System.Drawing.Point(308, 287);
             this.pictureBoxDetail.Name = "pictureBoxDetail";
             this.pictureBoxDetail.Size = new System.Drawing.Size(215, 192);
             this.pictureBoxDetail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -257,8 +258,9 @@
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.image1,
-            this.PathFile,
-            this.indexId});
+            this.Distance,
+            this.indexId,
+            this.PathFile});
             this.dataGridView1.Location = new System.Drawing.Point(16, 68);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -266,7 +268,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 150;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(203, 411);
+            this.dataGridView1.Size = new System.Drawing.Size(257, 411);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
@@ -280,21 +282,27 @@
             this.image1.ReadOnly = true;
             this.image1.Width = 200;
             // 
-            // PathFile
+            // Distance
             // 
-            this.PathFile.DataPropertyName = "PathFile";
-            this.PathFile.HeaderText = "Column1";
-            this.PathFile.Name = "PathFile";
-            this.PathFile.ReadOnly = true;
-            this.PathFile.Visible = false;
+            this.Distance.DataPropertyName = "Distance";
+            this.Distance.HeaderText = "Distance";
+            this.Distance.Name = "Distance";
+            this.Distance.ReadOnly = true;
             // 
             // indexId
             // 
-            this.indexId.DataPropertyName = "IndexId";
-            this.indexId.HeaderText = "MyIndex";
+            this.indexId.DataPropertyName = "indexId";
+            this.indexId.HeaderText = "indexId";
             this.indexId.Name = "indexId";
             this.indexId.ReadOnly = true;
             this.indexId.Visible = false;
+            // 
+            // PathFile
+            // 
+            this.PathFile.DataPropertyName = "PathFile";
+            this.PathFile.HeaderText = "PathFile";
+            this.PathFile.Name = "PathFile";
+            this.PathFile.ReadOnly = true;
             // 
             // btnPhanTich
             // 
@@ -315,7 +323,7 @@
             "Tất cả"});
             this.cboKetQua.Location = new System.Drawing.Point(16, 44);
             this.cboKetQua.Name = "cboKetQua";
-            this.cboKetQua.Size = new System.Drawing.Size(203, 21);
+            this.cboKetQua.Size = new System.Drawing.Size(257, 21);
             this.cboKetQua.TabIndex = 10;
             this.cboKetQua.SelectedIndexChanged += new System.EventHandler(this.cboKetQua_SelectedIndexChanged);
             // 
@@ -331,7 +339,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(783, 47);
+            this.label4.Location = new System.Drawing.Point(1067, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 5;
@@ -341,7 +349,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1012, 47);
+            this.label5.Location = new System.Drawing.Point(1296, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 5;
@@ -361,7 +369,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 508);
+            this.ClientSize = new System.Drawing.Size(1061, 508);
             this.Controls.Add(this.cboKetQua);
             this.Controls.Add(this.btnPhanTich);
             this.Controls.Add(this.dataGridView1);
@@ -386,6 +394,7 @@
             this.Controls.Add(this.pictSource);
             this.Name = "FrmMainFormHis";
             this.Text = "Tìm kiếm ảnh theo biểu đồ mầu";
+            this.Load += new System.EventHandler(this.FrmMainFormHis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -414,15 +423,16 @@
         private ZedGraph.ZedGraphControl zedGraphControl6;
         private System.Windows.Forms.PictureBox pictureBoxDetail;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewImageColumn image1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PathFile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn indexId;
         private System.Windows.Forms.Button btnPhanTich;
         private System.Windows.Forms.ComboBox cboKetQua;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblKetQua;
+        private System.Windows.Forms.DataGridViewImageColumn image1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Distance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn indexId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PathFile;
     }
 }
 

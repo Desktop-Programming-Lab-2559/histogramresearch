@@ -341,7 +341,7 @@ namespace HisogramResearch
                             Distance = d,
                             Image = Image.FromFile(imagefile.FilePath),
                             PathFile = imagefile.FilePath,
-                            indexId = imagefile.Index,
+                           // indexId = imagefile.Index,
                         });
                 }
             }
@@ -371,8 +371,12 @@ namespace HisogramResearch
                          if (imageGrid.Distance > 100) break;
                          listSource.Add(imageGrid);
                      }
+                     listSource.Sort(delegate(ImageGrid grid, ImageGrid imageGrid)
+                     { return grid.Distance.CompareTo(imageGrid.Distance); });
                      dataGridView1.DataSource = listSource;
                      dataGridView1.Refresh();
+                     var count = listSource.Count;
+                     lblKetQua.Text = "Kết Quả:" + count.ToString();
                  }
                  cboKetQua.SelectedIndex = 0;
                
@@ -427,8 +431,13 @@ namespace HisogramResearch
             {
                 listSource.AddRange(_listDisPlay);
             }
+            listSource.Sort(delegate(ImageGrid grid, ImageGrid imageGrid)
+            { return grid.Distance.CompareTo(imageGrid.Distance); });
             dataGridView1.DataSource = listSource;
             dataGridView1.Refresh();
+
+            var count = listSource.Count;
+            lblKetQua.Text = "Kết Quả:" + count.ToString();
         }
 
        

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -83,6 +84,9 @@ namespace HisogramResearch
             myPane.XAxis.Scale.Max = 255;
             myPane.XAxis.Scale.MinorStep = 1;
             myPane.XAxis.Scale.MajorStep = 1;
+
+            myPane.YAxis.Scale.Min = 0;
+            myPane.YAxis.Scale.Max = 0.03;
 
             myPane.Title.Text = "";
 
@@ -371,8 +375,12 @@ namespace HisogramResearch
                          if (imageGrid.Distance > 100) break;
                          listSource.Add(imageGrid);
                      }
+                     listSource.Sort(delegate(ImageGrid grid, ImageGrid imageGrid)
+                     { return grid.Distance.CompareTo(imageGrid.Distance); });
                      dataGridView1.DataSource = listSource;
                      dataGridView1.Refresh();
+                     var count = listSource.Count;
+                     lblKetQua.Text = "Kết Quả:" + count.ToString();
                  }
                  cboKetQua.SelectedIndex = 0;
                
@@ -414,7 +422,6 @@ namespace HisogramResearch
        // private List<ImageGrid> listSource = new List<ImageGrid>(); 
         private void cboKetQua_SelectedIndexChanged(object sender, EventArgs e)
         {
-            long count = 0;
             var listSource = new List<ImageGrid>(); 
             if (cboKetQua.SelectedIndex == 0)
             {
@@ -422,16 +429,25 @@ namespace HisogramResearch
                 {
                     if(imageGrid.Distance > 100) break;
                     listSource.Add(imageGrid);
-                    count++;
                 }
             }
             else
             {
                 listSource.AddRange(_listDisPlay);
             }
+            listSource.Sort(delegate(ImageGrid grid, ImageGrid imageGrid)
+                { return grid.Distance.CompareTo(imageGrid.Distance); });
             dataGridView1.DataSource = listSource;
+           
             dataGridView1.Refresh();
-            lblKetQua.Text = "Kết Quả:" + count.ToString()
+            var count = listSource.Count;
+            lblKetQua.Text = "Kết Quả:" + count.ToString();
+        }
+
+        private void FrmMainFormHis_Load(object sender, EventArgs e)
+        {
+           dataGridView1.Sort(dataGridView1.Columns[1], ListSortDirection.Descending);
+        
         }
 
        

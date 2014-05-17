@@ -48,15 +48,16 @@
             this.zedGraphControl6 = new ZedGraph.ZedGraphControl();
             this.pictureBoxDetail = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.image1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.PathFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.indexId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPhanTich = new System.Windows.Forms.Button();
             this.cboKetQua = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblKetQua = new System.Windows.Forms.Label();
+            this.image1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Distance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PathFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.indexId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -253,6 +254,7 @@
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.image1,
+            this.Distance,
             this.PathFile,
             this.indexId});
             this.dataGridView1.Location = new System.Drawing.Point(16, 68);
@@ -265,32 +267,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(203, 411);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
-            // 
-            // image1
-            // 
-            this.image1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.image1.DataPropertyName = "Image";
-            this.image1.HeaderText = "Ảnh";
-            this.image1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.image1.Name = "image1";
-            this.image1.ReadOnly = true;
-            this.image1.Width = 200;
-            // 
-            // PathFile
-            // 
-            this.PathFile.DataPropertyName = "PathFile";
-            this.PathFile.HeaderText = "Column1";
-            this.PathFile.Name = "PathFile";
-            this.PathFile.ReadOnly = true;
-            this.PathFile.Visible = false;
-            // 
-            // indexId
-            // 
-            this.indexId.DataPropertyName = "IndexId";
-            this.indexId.HeaderText = "MyIndex";
-            this.indexId.Name = "indexId";
-            this.indexId.ReadOnly = true;
-            this.indexId.Visible = false;
             // 
             // btnPhanTich
             // 
@@ -351,6 +327,38 @@
             this.lblKetQua.TabIndex = 5;
             this.lblKetQua.Text = "Kết quả:";
             // 
+            // image1
+            // 
+            this.image1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.image1.DataPropertyName = "Image";
+            this.image1.HeaderText = "Ảnh";
+            this.image1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.image1.Name = "image1";
+            this.image1.ReadOnly = true;
+            this.image1.Width = 200;
+            // 
+            // Distance
+            // 
+            this.Distance.DataPropertyName = "Distance";
+            this.Distance.HeaderText = "Distance";
+            this.Distance.Name = "Distance";
+            this.Distance.ReadOnly = true;
+            // 
+            // PathFile
+            // 
+            this.PathFile.DataPropertyName = "PathFile";
+            this.PathFile.HeaderText = "PathFile";
+            this.PathFile.Name = "PathFile";
+            this.PathFile.ReadOnly = true;
+            // 
+            // indexId
+            // 
+            this.indexId.DataPropertyName = "indexId";
+            this.indexId.HeaderText = "indexId";
+            this.indexId.Name = "indexId";
+            this.indexId.ReadOnly = true;
+            this.indexId.Visible = false;
+            // 
             // FrmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,15 +416,16 @@
         private ZedGraph.ZedGraphControl zedGraphControl6;
         private System.Windows.Forms.PictureBox pictureBoxDetail;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewImageColumn image1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PathFile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn indexId;
         private System.Windows.Forms.Button btnPhanTich;
         private System.Windows.Forms.ComboBox cboKetQua;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblKetQua;
+        private System.Windows.Forms.DataGridViewImageColumn image1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Distance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PathFile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn indexId;
     }
 }
 

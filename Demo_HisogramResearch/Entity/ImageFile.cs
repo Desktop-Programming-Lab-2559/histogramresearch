@@ -6,12 +6,12 @@ namespace HisogramResearch.Entity
     {
         public ImageFile()
         {
-            Color= new long[256];
+            Color = new double[256];
         }
         public int Index { get; set; }
         public string FilePath { get; set; }
         public HistogramResult HistogramResult { get; set; }
-        public long[] Color { get; set; }
+        public double[] Color { get; set; }
         public void Dispose()
         {
             Color = null;

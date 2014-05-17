@@ -52,6 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmMainFormFour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMainFormFour.Designer.cs">
+      <DependentUpon>FrmMainFormFour.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMainFormHis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Utils\DirectionIO.cs" />
     <Compile Include="Utils\HistogramUtils.cs" />
     <Compile Include="Utils\JsonUtils.cs" />
+    <EmbeddedResource Include="FrmMainFormFour.resx">
+      <DependentUpon>FrmMainFormFour.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMainFormHis.resx">
       <DependentUpon>FrmMainFormHis.cs</DependentUpon>
     </EmbeddedResource>
