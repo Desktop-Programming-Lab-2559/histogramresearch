@@ -53,7 +53,7 @@ namespace HisogramResearch.Utils
                                 break;
                         }
                     }
-                for (int i = 1; i < 256; i++)
+                for (int i = 0; i < 256; i++)
                 {
                     var s = (myHistogram[i] / imageSize);
                     myHistogram[i] = s;
@@ -143,7 +143,7 @@ namespace HisogramResearch.Utils
                         }
                     }
 
-                for (int i = 1; i < 256; i++)
+                for (int i = 0; i < 256; i++)
                 {
                     var s = (myHistogram[i] / imageSize);
                     myHistogram[i] = s;
