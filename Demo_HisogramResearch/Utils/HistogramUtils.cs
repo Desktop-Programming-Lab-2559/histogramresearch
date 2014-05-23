@@ -53,7 +53,7 @@ namespace HisogramResearch.Utils
                                 break;
                         }
                     }
-                for (int i = 1; i < 256; i++)
+                for (int i = 0; i < 256; i++)
                 {
                     var s = (myHistogram[i] / imageSize);
                     myHistogram[i] = s;
@@ -143,7 +143,7 @@ namespace HisogramResearch.Utils
                         }
                     }
 
-                for (int i = 1; i < 256; i++)
+                for (int i = 0; i < 256; i++)
                 {
                     var s = (myHistogram[i] / imageSize);
                     myHistogram[i] = s;
@@ -245,7 +245,7 @@ namespace HisogramResearch.Utils
             
                 for (int i = 0; i < 256; i++)
                 {
-                    total[i] = 2 * color1[i] + color2[i] + color3[i] + color4[i] + color5[i] + color6[i] + color7[i];
+                    total[i] = 2 * color1[i] + color2[i] + color3[i] + 2*color4[i] + 3*color5[i] + 2*color6[i] + color7[i];
                 }
             return total;
         }

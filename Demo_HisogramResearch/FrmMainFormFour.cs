@@ -326,25 +326,20 @@ namespace HisogramResearch
                 }
             }
            
-           
-            var listdistance = _distanceDental.Distancel.Values.ToList();
-            listdistance.Sort();
-            foreach (var d in listdistance)
+            foreach (var d in _distanceDental.Distancel)
             {
-                var listvalue = _distanceDental.Distancel.Where(a => a.Value == d);
-                foreach (var b in listvalue)
-                {
-                    var imagefile = _directory.Find(a => a.Index == b.Key);
-                    //imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
-                    if (imagefile !=null)
+
+                var imagefile = _directory.Find(a => a.Index == d.Key);
+                //imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
+                if (imagefile != null)
                     _listDisPlay.Add(new ImageGrid
                         {
-                            Distance = d,
+                            Distance = d.Value,
                             Image = Image.FromFile(imagefile.FilePath),
-                            PathFile = imagefile.FilePath,
-                           // indexId = imagefile.Index,
+                            PathFile = imagefile.FilePath, //.Substring(imagefile.FilePath.LastIndexOf("\\"),imagefile.FilePath.Length - imagefile.FilePath.LastIndexOf("\\")),
+                            indexId = imagefile.Index,
                         });
-                }
+
             }
         }
 

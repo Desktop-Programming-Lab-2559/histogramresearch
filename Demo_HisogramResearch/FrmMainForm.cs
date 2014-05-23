@@ -328,23 +328,21 @@ namespace HisogramResearch
            
             var listdistance = _distanceDental.Distancel.Values.ToList();
             listdistance.Sort();
-            foreach (var d in listdistance)
-            {
-                var listvalue = _distanceDental.Distancel.Where(a => a.Value == d);
-                foreach (var b in listvalue)
+           
+                foreach (var b in _distanceDental.Distancel)
                 {
                     var imagefile = _directory.Find(a => a.Index == b.Key);
                     //imageList1.Images.Add(imagefile.FilePath,new Bitmap(imagefile.FilePath));
                     if (imagefile !=null)
                     _listDisPlay.Add(new ImageGrid
                         {
-                            Distance = d,
+                            Distance = b.Value,
                             Image = Image.FromFile(imagefile.FilePath),
                             PathFile = imagefile.FilePath,
                            // indexId = imagefile.Index,
                         });
                 }
-            }
+             
         }
 
         private void btnTimKiemAnh_Click(object sender, EventArgs e)
